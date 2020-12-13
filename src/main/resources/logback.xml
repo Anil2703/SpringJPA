@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration scan = "true" scanPeriod = "30 seconds">
+    <appender name = "consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <pattern>
+                    <pattern> { "level": "%level",
+                                "class": "%class",
+                                "lineNumber": "%L",
+                                "message" : "%message",
+                                "json_message" : "#asJson{%message}",
+                                "stack_trace": "%exception"}
+                    </pattern>
+                    </pattern>
+            </providers>
+        </encoder>
+    </appender>
+
+    <root level = "INFO">
+        <appender-ref ref="consoleAppender"/>
+    </root>
+</configuration>
